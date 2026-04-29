@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+/*Luxury Florist Theme */
+:root {
+  --background: #F8F5F2;   /* soft ivory */
+  --foreground: #2C2C2C;   /* elegant dark text */
+
+  --primary: #E8D8D0;      /* dusty rose */
+  --accent: #C7A6A1;       /* muted mauve */
+  --gold: #C8A96A;         /* luxury gold */
+
+  --border-soft: rgba(0,0,0,0.08);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+
+  font-family: var(--font-inter), sans-serif;
+
+  /* smoother rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 22s linear infinite;
+}
+
+/* optional: pause on hover (nice UX) */
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
