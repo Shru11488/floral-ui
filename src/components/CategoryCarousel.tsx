@@ -1,32 +1,33 @@
-"use client";
-
 export default function CategoryCarousel() {
-  const items = [
-    "Luxury bouquets",
-    "Same-day delivery",
-    "Fresh seasonal flowers",
-    "Handcrafted arrangements",
-    "Eco-friendly packaging",
-    "Wedding specialists",
-  ];
-
   return (
-    <section className="px-6 max-w-7xl mx-auto">
-      {/* subtle divider like reference */}
-      <div className="relative overflow-hidden border-y border-[var(--border-soft)] py-4 bg-white/40 backdrop-blur-sm rounded-xl">
-        {/* gradient fade edges (premium touch) */}
-        <div className="pointer-events-none absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-[var(--background)] to-transparent z-10" />
-        <div className="pointer-events-none absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-[var(--background)] to-transparent z-10" />
+    <section className="py-48 space-y-48">
+      <div className="grid md:grid-cols-2 gap-24 items-center px-16">
+        <img
+          src="https://i.pinimg.com/736x/22/76/36/2276366f2540037bddb332bd954e56f9.jpg"
+          className="w-full h-[650px] object-cover"
+        />
 
-        {/* moving line */}
-        <div className="whitespace-nowrap animate-marquee flex gap-10 text-sm text-gray-600 px-4">
-          {[...items, ...items].map((text, i) => (
-            <span key={i} className="flex items-center gap-3">
-              <span className="text-[var(--gold)]">•</span>
-              {text}
-            </span>
-          ))}
+        <div>
+          <h2 className="text-5xl mb-6 leading-tight">Wedding Florals</h2>
+          <p className="text-gray-600 max-w-md">
+            Thoughtfully designed arrangements that bring elegance to every
+            moment.
+          </p>
         </div>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-24 items-center px-16">
+        <div>
+          <h2 className="text-5xl mb-6 leading-tight">Seasonal Bouquets</h2>
+          <p className="text-gray-600 max-w-md">
+            Inspired by nature, crafted with precision.
+          </p>
+        </div>
+
+        <img
+          src="https://assets.winni.in/c_limit,dpr_1,fl_progressive,q_80,w_1000/54790_painted-skies-tulip-bouquet.jpeg"
+          className="w-full h-[650px] object-cover"
+        />
       </div>
     </section>
   );

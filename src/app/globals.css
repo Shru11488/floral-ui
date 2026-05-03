@@ -1,41 +1,84 @@
 @import "tailwindcss";
 
-/*Luxury Florist Theme */
-:root {
-  --background: #F8F5F2;   /* soft ivory */
-  --foreground: #2C2C2C;   /* elegant dark text */
-
-  --primary: #E8D8D0;      /* dusty rose */
-  --accent: #C7A6A1;       /* muted mauve */
-  --gold: #C8A96A;         /* luxury gold */
-
-  --border-soft: rgba(0,0,0,0.08);
+@theme {
+  --color-background: #FDFCFB;
+  --color-foreground: #1A1A1A;
+  --color-primary: #D4AF37;
+  --color-secondary: #E2E8E4;
+  --color-accent: #C7A6A1;
+  
+  --font-sans: var(--font-inter), sans-serif;
+  --font-serif: var(--font-playfair), serif;
 }
 
-body {
+@layer base {
+  :root {
+    --background: #FDFCFB;
+    --foreground: #1A1A1A;
+    --primary: #D4AF37;
+    --secondary: #E2E8E4;
+    --accent: #C7A6A1;
+    --border: rgba(26, 26, 26, 0.08);
+  }
+
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-inter), sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-playfair), serif;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .glass {
+    background: rgba(253, 252, 251, 0.75);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(26, 26, 26, 0.05);
+  }
+
+  .premium-shadow {
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
+  }
+
+  .kerning-luxury {
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
   background: var(--background);
-  color: var(--foreground);
-
-  font-family: var(--font-inter), sans-serif;
-
-  /* smoother rendering */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
-@keyframes marquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+::-webkit-scrollbar-thumb {
+  background: #E2E8E4;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D4AF37;
 }
 
-.animate-marquee {
-  animation: marquee 22s linear infinite;
-}
-
-/* optional: pause on hover (nice UX) */
-.animate-marquee:hover {
-  animation-play-state: paused;
+/* Selection color */
+::selection {
+  background: #F3E5D8;
+  color: #1A1A1A;
 }
