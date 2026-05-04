@@ -50,6 +50,27 @@ const products = [
   },
 ];
 
+const reviews = [
+  {
+    name: "Eleanor Pemberton",
+    role: "Wedding Coordinator",
+    content: "The attention to detail in their signature boxes is unparalleled. Floral Studio has become our go-to for high-end events in London.",
+    rating: 5,
+  },
+  {
+    name: "James Sutherland",
+    role: "Collector",
+    content: "Exquisite craftsmanship. The 'Midnight Reverie' bouquet arrived in pristine condition and stayed vibrant for nearly two weeks.",
+    rating: 5,
+  },
+  {
+    name: "Isabella Rossi",
+    role: "Interior Designer",
+    content: "Sustainability meets absolute luxury. Their commitment to ethical sourcing makes their botanical art even more beautiful.",
+    rating: 5,
+  },
+];
+
 // --- Sub-components ---
 
 function Navbar() {
@@ -316,12 +337,62 @@ function SignatureCollections() {
   );
 }
 
+function Testimonials() {
+  return (
+    <section className="py-32 px-6 bg-background border-t border-foreground/5">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-20">
+          <span className="kerning-luxury text-[10px] text-primary mb-4 block">Kind Words</span>
+          <h2 className="text-4xl md:text-5xl leading-tight">Voices of Our <span className="italic font-light">Clients</span></h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-24">
+          {reviews.map((review, index) => (
+            <motion.div
+              key={review.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.8 }}
+              viewport={{ once: true }}
+              className="flex flex-col items-center text-center group"
+            >
+              <div className="flex gap-1 mb-6">
+                {[...Array(review.rating)].map((_, i) => (
+                  <svg key={i} xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" className="text-primary"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                ))}
+              </div>
+              <p className="text-lg text-foreground/80 font-light leading-relaxed mb-8 italic">
+                "{review.content}"
+              </p>
+              <div>
+                <h4 className="text-sm font-medium mb-1">{review.name}</h4>
+                <p className="text-[10px] kerning-luxury opacity-40">{review.role}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="max-w-4xl mx-auto pt-24 border-t border-foreground/5 text-center">
+          <h2 className="text-2xl md:text-4xl italic font-light leading-snug mb-12 opacity-70">
+            "Flowers are the music of the ground. From earth's lips spoken without sound."
+          </h2>
+          <div className="flex items-center justify-center gap-4">
+            <div className="w-12 h-[1px] bg-foreground/10" />
+            <p className="text-[11px] kerning-luxury opacity-40">Edwin Curran</p>
+            <div className="w-12 h-[1px] bg-foreground/10" />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Footer() {
   return (
     <footer className="py-24 px-6 md:px-12 bg-[#1A1A1A] text-white">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
-          <div className="lg:col-span-1">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12 mb-20">
+          <div className="lg:col-span-1 md:col-span-3 lg:mb-0 mb-8">
             <div className="text-2xl kerning-luxury mb-8">FLORAL STUDIO</div>
             <p className="max-w-sm text-sm text-white/60 leading-relaxed font-light mb-8">
               Elevating the art of gifting through bespoke floral design and sustainable practices. Based in London, delivering elegance worldwide.
@@ -347,15 +418,29 @@ function Footer() {
             <ul className="space-y-6 text-sm text-white/60 font-light">
               <li className="flex items-start gap-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-primary shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span>124 Marylebone High St, <br /> London W1U 4PG, United Kingdom</span>
+                <span>124 Marylebone High St, <br /> London W1U 4PG</span>
               </li>
               <li className="flex items-start gap-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-primary shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.27-2.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 <span>+44 (0) 20 7486 7870</span>
               </li>
-              <li className="flex items-start gap-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-primary shrink-0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                <span>concierge@floralstudio.com</span>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-[11px] kerning-luxury mb-8">Boutique Hours</h4>
+            <ul className="space-y-4 text-sm text-white/60 font-light">
+              <li className="flex justify-between gap-4">
+                <span>Mon - Fri</span>
+                <span className="text-white/30">09:00 - 19:00</span>
+              </li>
+              <li className="flex justify-between gap-4">
+                <span>Saturday</span>
+                <span className="text-white/30">10:00 - 18:00</span>
+              </li>
+              <li className="flex justify-between gap-4">
+                <span>Sunday</span>
+                <span className="text-white/30">11:00 - 17:00</span>
               </li>
             </ul>
           </div>
@@ -406,21 +491,7 @@ export default function Home() {
       <BouquetCategory />
       <FeaturedProducts />
       <SignatureCollections />
-      
-      {/* Testimonials or Quality Promise Section */}
-      <section className="py-32 px-6 bg-background border-t border-foreground/5">
-        <div className="max-w-4xl mx-auto text-center">
-          <span className="kerning-luxury text-[10px] text-primary mb-8 block">Excellence Guaranteed</span>
-          <h2 className="text-3xl md:text-5xl italic font-light leading-snug mb-12">
-            "Flowers are the music of the ground. From earth's lips spoken without sound."
-          </h2>
-          <div className="flex items-center justify-center gap-4">
-            <div className="w-12 h-[1px] bg-foreground/20" />
-            <p className="text-[11px] kerning-luxury opacity-60">Edwin Curran</p>
-            <div className="w-12 h-[1px] bg-foreground/20" />
-          </div>
-        </div>
-      </section>
+      <Testimonials />
 
       <Footer />
     </main>
