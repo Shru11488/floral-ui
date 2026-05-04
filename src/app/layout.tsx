@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,7 +17,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="min-h-screen relative">
-        <Navbar />
         {children}
       </body>
     </html>
